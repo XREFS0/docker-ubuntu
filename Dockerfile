@@ -14,6 +14,13 @@ RUN apt update -y && apt install -y xubuntu-icon-theme
 RUN mkdir -p /usr/share/backgrounds/xfce /usr/share/xfce4/backdrops && \
     wget --no-check-certificate "https://b.top4top.io/p_3853l6za61.jpg" -O /usr/share/backgrounds/custom.jpg && \
     find /usr/share/backgrounds/ /usr/share/xfce4/backdrops/ -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.svg" \) -exec cp /usr/share/backgrounds/custom.jpg {} \;
+RUN git clone https://github.com/B00merang-Project/Windows-10.git /usr/share/themes/Windows-10 && \
+    git clone https://github.com/B00merang-Project/Windows-10-Icons.git /usr/share/icons/Windows-10 && \
+    mkdir -p /etc/xdg/autostart && \
+    echo "[Desktop Entry]" > /etc/xdg/autostart/set-win-theme.desktop && \
+    echo "Type=Application" >> /etc/xdg/autostart/set-win-theme.desktop && \
+    echo "Exec=sh -c \"xfconf-query -c xsettings -p /Net/ThemeName -s Windows-10; xfconf-query -c xsettings -p /Net/IconThemeName -s Windows-10; xfconf-query -c xfwm4 -p /general/theme -s Windows-10\"" >> /etc/xdg/autostart/set-win-theme.desktop && \
+    echo "Name=Set Win Theme" >> /etc/xdg/autostart/set-win-theme.desktop
 RUN echo '<meta http-equiv="refresh" content="0; url=vnc.html?autoconnect=true&resize=scale">' > /usr/share/novnc/index.html && \
     echo '<meta http-equiv="refresh" content="0; url=vnc.html?autoconnect=true&resize=scale">' > /usr/share/novnc/vnc_lite.html
 RUN touch /root/.Xauthority

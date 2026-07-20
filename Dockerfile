@@ -14,6 +14,8 @@ RUN apt update -y && apt install -y xubuntu-icon-theme
 RUN mkdir -p /usr/share/backgrounds/xfce /usr/share/xfce4/backdrops && \
     wget --no-check-certificate "https://b.top4top.io/p_3853l6za61.jpg" -O /usr/share/backgrounds/custom.jpg && \
     find /usr/share/backgrounds/ /usr/share/xfce4/backdrops/ -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.svg" \) -exec cp /usr/share/backgrounds/custom.jpg {} \;
+RUN echo '<meta http-equiv="refresh" content="0; url=vnc.html?autoconnect=true&resize=scale">' > /usr/share/novnc/index.html && \
+    echo '<meta http-equiv="refresh" content="0; url=vnc.html?autoconnect=true&resize=scale">' > /usr/share/novnc/vnc_lite.html
 RUN touch /root/.Xauthority
 EXPOSE 5901
 EXPOSE 6080

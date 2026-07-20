@@ -1,44 +1,40 @@
-# 🌟 XREFS0 VNC Desktop Environment 🌟
+# Ubuntu Desktop via Web (Windows 10 Theme) 🖥️✨
 
-Welcome to the **XREFS0** custom Ubuntu Docker environment. This project provides a fully-fledged, browser-based Linux desktop tailored with a Windows 10 aesthetic, custom tools, and automated optimizations.
+![Screenshot](screenshot.jpg)
 
-## 🚀 Features
-- **Windows 10 Theme & Icons:** Fully styled XFCE desktop environment to look like Windows.
-- **Web-based Access:** Connect instantly via browser using noVNC with Auto-connect & Auto-scale.
-- **Optimized & Secure:** Runs securely as the `XREFS0` user.
-- **Pre-installed Tools:** Firefox, VLC, Python, PDF Reader, Archive tools, and more!
-- **Clipboard Sync:** Seamless copy/paste between host and container.
-- **Arabic Support:** Full Arabic fonts and `Alt+Shift` keyboard layout switching.
+This project is a Docker container built on **Ubuntu 22.04** running the XFCE desktop environment, which can be accessed directly from your web browser using **noVNC**.
 
-## 🛠️ How to Use
+This build has been heavily customized to look and feel like **Windows 10** with automated settings for a better user experience.
 
-1. **Build the Docker Image:**
-   ```bash
-   docker build -t xrefs0-desktop .
-   ```
+## 🌟 Features
 
-2. **Run the Container:**
-   ```bash
-   docker run -d -p 6080:6080 -p 5901:5901 xrefs0-desktop
-   ```
+* **Windows 10 Theme:** Automatically downloads and applies the B00merang Windows 10 theme and icon pack on startup.
+* **Custom Wallpaper:** Configured to download a custom background image, overriding the default XFCE wallpapers.
+* **Auto-Scaling Display:** The resolution is set to `1920x1080` but will automatically scale to perfectly fit your browser window without annoying scrollbars. Full-screen mode is also supported.
+* **Browser Ready:** Comes pre-installed with Mozilla Firefox for immediate web browsing.
+* **Railway Ready:** Configurations and files are perfectly structured for easy deployment on Railway's cloud infrastructure.
 
-3. **Access the Desktop:**
-   Open your browser and navigate to: [http://localhost:6080](http://localhost:6080)
-   
-   *(VNC Password: `123`)*
+## 🚀 Deployment
+
+1. Push these files (specifically the `Dockerfile` and `screenshot.jpg`) to your GitHub repository.
+2. Link your GitHub repository to your **Railway** account.
+3. Railway will automatically read the `Dockerfile` and build the environment.
+4. Once completed, open the domain provided by Railway in your web browser.
+5. You will be automatically redirected to the VNC page, and your Windows 10 styled desktop will be ready to use!
+
+## 🛠️ Customization
+* **Change Wallpaper:** Modify the image URL next to the `wget` command in the `Dockerfile`.
+* **Change Resolution:** Find `1920x1080` in the `Dockerfile` and change it to your preferred resolution.
 
 ---
+*This project is optimized to deliver the best performance with minimal resource consumption.*
 
-## 📬 Connect with XREFS0
-
-Feel free to reach out or follow for more updates:
+## 🌐 Contact & Follow
 
 <div align="center">
-
-[![Website](https://img.shields.io/badge/Website-000000?style=for-the-badge&logo=google-chrome&logoColor=white)](http://xrefs0.com/)
-[![Facebook](https://img.shields.io/badge/Facebook-%231877F2.svg?style=for-the-badge&logo=Facebook&logoColor=white)](https://www.facebook.com/XREFS0)
-[![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white)](https://www.youtube.com/@XREFS0)
-[![Telegram Contact](https://img.shields.io/badge/Telegram_Contact-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/MrMasaOfficial)
-[![Telegram Channel](https://img.shields.io/badge/Telegram_Channel-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/XREFS0_CHANNEL)
-
+  <a href="https://www.facebook.com/XREFS0"><img src="https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white" alt="Facebook"></a>
+  <a href="https://t.me/MrMasaOfficial"><img src="https://img.shields.io/badge/Contact-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram Contact"></a>
+  <a href="https://t.me/XREFS0_CHANNEL"><img src="https://img.shields.io/badge/Channel-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram Channel"></a>
+  <a href="http://xrefs0.com/"><img src="https://img.shields.io/badge/Website-000000?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Website"></a>
+  <a href="https://www.youtube.com/@XREFS0"><img src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube"></a>
 </div>

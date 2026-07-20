@@ -11,12 +11,9 @@ RUN echo 'Pin-Priority: 1001' >> /etc/apt/preferences.d/mozilla-firefox
 RUN echo 'Unattended-Upgrade::Allowed-Origins:: "LP-PPA-mozillateam:jammy";' | tee /etc/apt/apt.conf.d/51unattended-upgrades-firefox
 RUN apt update -y && apt install -y firefox
 RUN apt update -y && apt install -y xubuntu-icon-theme
-RUN mkdir -p /usr/share/backgrounds/xfce && \
-    wget -q https://b.top4top.io/p_3853l6za61.jpg -O /usr/share/backgrounds/xfce/xfce-shapes.svg && \
-    wget -q https://b.top4top.io/p_3853l6za61.jpg -O /usr/share/backgrounds/xfce/xfce-stripes.png && \
-    wget -q https://b.top4top.io/p_3853l6za61.jpg -O /usr/share/backgrounds/xfce/xfce-teal.jpg && \
-    wget -q https://b.top4top.io/p_3853l6za61.jpg -O /usr/share/backgrounds/xfce/xfce-blue.jpg && \
-    wget -q https://b.top4top.io/p_3853l6za61.jpg -O /usr/share/backgrounds/xfce/default.png
+RUN mkdir -p /usr/share/backgrounds/xfce /usr/share/xfce4/backdrops && \
+    wget --no-check-certificate "https://b.top4top.io/p_3853l6za61.jpg" -O /usr/share/backgrounds/custom.jpg && \
+    find /usr/share/backgrounds/ /usr/share/xfce4/backdrops/ -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.svg" \) -exec cp /usr/share/backgrounds/custom.jpg {} \;
 RUN touch /root/.Xauthority
 EXPOSE 5901
 EXPOSE 6080

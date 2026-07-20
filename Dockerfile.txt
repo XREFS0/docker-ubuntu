@@ -9,7 +9,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 # تثبيت الحزم الأساسية، الواجهة، الخطوط، أدوات فك الضغط، الصوتيات، البرمجة، والميديا
 RUN apt update -y && \
     apt install --no-install-recommends -y \
-    xfce4 xfce4-goodies tigervnc-standalone-server novnc websockify \
+    xfce4 xfce4-goodies tigervnc-standalone-server tigervnc-tools novnc websockify \
     sudo xterm init systemd snapd vim net-tools curl wget git tzdata \
     dbus-x11 x11-utils x11-xserver-utils x11-apps \
     fonts-hosny-amiri fonts-kacst fonts-arabeyes \
@@ -73,5 +73,5 @@ RUN wget -q -O /home/XREFS0/wallpaper.jpg "https://b.top4top.io/p_3853l6za61.jpg
 EXPOSE 5901
 EXPOSE 6080
 
-# أمر التشغيل النهائي باستخدام المتغيرات وبصلاحيات المستخدم العادي
-CMD bash -c "echo $VNC_PASSWORD | vncpasswd -f > ~/.vnc/passwd && chmod 600 ~/.vnc/passwd && vncserver -localhost no -SecurityTypes VncAuth -PasswordFile ~/.vnc/passwd -geometry $RESOLUTION && openssl req -new -subj \"/C=EG\" -x509 -days 365 -nodes -out ~/self.pem -keyout ~/self.pem && websockify -D --web=/usr/share/novnc/ --cert=~/self.pem 6080 localhost:5901 && tail -f /dev/null"
+# أمر التشغيل النهائي (معدل ليعمل على منصات الاستضافة السحابية)
+CMD bash -c "rm -rf /tmp/.X* && echo $VNC_PASSWORD | vncpasswd -f > ~/.vnc/passwd && chmod 600 ~/.vnc/passwd && vncserver :1 -localhost no -SecurityTypes VncAuth -PasswordFile ~/.vnc/passwd -geometry $RESOLUTION && websockify --web=/usr/share/novnc/ ${PORT:-6080} localhost:5901"
